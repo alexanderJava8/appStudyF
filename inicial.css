@@ -4,41 +4,61 @@
     box-sizing: border-box;
 }
 
-/*contenedor*/
-header {
+.container {
     height: 100vh;
+    background-image: url("img/otraportada.jpg");
+    background-position: center;
     background-size: cover;
-    background: url("portada.jpg") center;
+    position: relative;
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
-    color: aliceblue;
+    justify-content: center;
+    align-items: center;
 }
 
-@font-face {
-    font-family: 'Roboto';
-    src: url(fonts/Roboto/Roboto-Medium.ttf);
+.container::before {
+    content: '';
+    background-color: #1D2126;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0.2;
 }
 
-h1 {
-    font-family: 'Roboto';
+.container-title {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: #C4CFDE;
+}
+
+.container-title > span {
+    color: #FF014F;
+}
+
+.container-enlace {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+
+.fa-note-sticky {
     font-size: 3em;
-    margin-bottom: 10px;
+    color: white;
+    transition: all 0.5s;
+    z-index: 1;
+    height: 20px;
 }
 
-p {
-    font-family: 'Roboto';
-}
 
-i {
-    color:white;
-    font-size: 3em;
-    transition-duration: 0.3s;
-}
-
-i:hover {
+.fa-note-sticky:hover {
     transform: scale(1.2);
-    cursor: pointer;
-    opacity: 0.90;
+    color: #C4CFDE;
 }
+
+
+
