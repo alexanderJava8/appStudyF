@@ -6,7 +6,8 @@
 
 .container {
     height: 100vh;
-    background-color: #1D2126;
+    /*background-color: #1D2126;*/
+    background-color: #000000;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -19,11 +20,11 @@
     font-size: 70px;
     font-weight: 700;
     line-height: 1.2;
-    color: #C4CFDE;
+    color: #FEFEFE;
 }
 
 .container-title > span {
-    color: #FF014F;
+    color: #FEBC38;
 }
 
 .container-enlace {
@@ -43,7 +44,7 @@
 
 .fa-note-sticky:hover {
     transform: scale(1.2);
-    color: #C4CFDE;
+    color: #FEBC38;
 }
 
 

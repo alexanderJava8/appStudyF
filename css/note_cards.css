@@ -1,0 +1,97 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --altura-titulo:168px;
+}
+
+body {
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.title {
+    color: #FEBC38;
+    font-family: "Helvetica", sans-serif;
+    height: var(--altura-titulo);
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    font-weight: 900;
+    font-size: 7vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+header {
+    height: var(--altura-titulo);
+    width: 100vw;
+}
+
+main {
+    height: auto;
+    width: 80%;
+}
+
+.section-cards {
+    height: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    gap: 20px;
+}
+
+.card {
+    grid-column: span 1;
+    grid-row: span 1;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #191919;
+    transition: background-color .5s;
+    cursor: pointer;
+}
+
+.card-title {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.card-title > a {
+    text-decoration: none;
+    font-weight: 700;
+    color: white;
+    font-size: 20px;
+}
+
+.card-title::before {
+    content: '';
+    position: absolute;
+    background-color: #FEBC38;
+    width: 35px;
+    height: 1px;
+    bottom: -5px;
+}
+
+.card:hover {
+    background-color: #FEBC38;
+}
+
+.card:hover .card-title::before {
+    background-color: black;
+    color: black;
+}
+
+.card:hover .card-title > a {
+    color: black;
+    font-weight: 500;
+}
