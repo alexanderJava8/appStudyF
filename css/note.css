@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000000;
+  height: auto;
+  line-height: 1.8;
+  font-weight: 400;
+  font-family: "Popins", Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-nota {
+  line-height: 1.5;
+  color: white;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.section-note {
+  height: auto;
+  width: 80vw;
+  color: #989898;
+}
+
+.section-note p {
+  margin-bottom: 10px;
+}
+
+.enlace {
+  text-decoration: none;
+  color: white;
+  margin-top: 80px;
+}
