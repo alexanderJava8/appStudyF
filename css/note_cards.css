@@ -64,6 +64,8 @@ main {
     position: relative;
     display: flex;
     justify-content: center;
+    height: 100%;
+    width: 100%;
 }
 
 .card-title > a {
@@ -71,15 +73,11 @@ main {
     font-weight: 700;
     color: white;
     font-size: 20px;
-}
-
-.card-title::before {
-    content: '';
-    position: absolute;
-    background-color: #FEBC38;
-    width: 35px;
-    height: 1px;
-    bottom: -5px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card:hover {
@@ -94,4 +92,19 @@ main {
 .card:hover .card-title > a {
     color: black;
     font-weight: 500;
+}
+
+.agregar-tema {
+    background-color: #FEBC38;
+    appearance: none;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 12px;
+    cursor: pointer;
+    color: #000000;
+    border-radius: 40px;
+    padding: 16px 24px;
 }
