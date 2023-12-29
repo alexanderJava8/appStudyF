@@ -1,6 +1,4 @@
 const mathLinkText = document.querySelector('#math-card a').innerText;
-const socialLinkText = document.querySelector('#social-sciences-card a').innerText;
-const languageLinkText = document.querySelector('#language-card a').innerText;
 
 const backendUrl = 'http://localhost:8080/api/v1/topics';
 const token = 'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiIiwiaWF0IjoxNzAzMjA5Nzk1LCJleHAiOjE3MDMyMTEyMzV9.fV2qQs7Ec3pn_rmo1VywjxnUZl3dGkpt20n_lvMgzSI'
