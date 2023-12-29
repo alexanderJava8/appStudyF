@@ -22,6 +22,7 @@ const enviarTema = () => {
         })
         .then(data => {
             console.log("respuesta backend", data)
+            window.location.href = 'topics_cards.html'
         })
         .catch(error => {
             console.error("hubo problema con el fetch", error)
