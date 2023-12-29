@@ -29,5 +29,4 @@ const enviarTema = () => {
 }
 
 const bot = document.getElementById("boton")
-
 bot.addEventListener('click', enviarTema)

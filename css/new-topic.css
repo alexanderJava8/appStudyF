@@ -39,7 +39,7 @@ section {
     align-items: center;
 }
 
-.form-createSubject > input {
+.boton {
     margin-top: 12px;
     border: none;
     appearance: none;
@@ -58,7 +58,6 @@ section {
     height: 25px;
     outline-color: #FEBC38;
 }
-
 
 
 
