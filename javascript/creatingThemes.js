@@ -41,10 +41,14 @@ const mostrarDatosEnFrontend = (data) => {
         span.classList.add('theme-text')
         span.textContent = item.name
 
+        const boton = document.createElement('a')
+        boton.classList.add('editar')
+
         anchor.appendChild(span)
         cardTitle.appendChild(anchor)
         card.appendChild(cardTitle)
         section.appendChild(card)
+
     })
 }
 

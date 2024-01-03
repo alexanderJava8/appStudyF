@@ -110,3 +110,20 @@ main {
     text-decoration: none;
     margin-top: 12px;
 }
+
+.editar {
+    text-decoration: none;
+    width: 67px;
+    height: 25px;
+    background-color: #0B5ED7;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    grid-row: 2;
+    margin-top: 10px;
+    margin-left: 5px;
+}
