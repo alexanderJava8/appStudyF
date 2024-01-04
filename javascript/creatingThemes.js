@@ -27,6 +27,10 @@ const mostrarDatosEnFrontend = (data) => {
     const section = document.getElementById("section");
 
     data.forEach(item => {
+        const contenedor = document.createElement('div')
+        contenedor.classList.add('contenedor')
+        contenedor.setAttribute('numeroElemento', item.id)
+
         const card = document.createElement('div')
         card.classList.add('card')
 
@@ -43,13 +47,23 @@ const mostrarDatosEnFrontend = (data) => {
 
         const boton = document.createElement('a')
         boton.classList.add('editar')
+        boton.textContent = 'editar'
+        boton.addEventListener('click', actualizar = (e) => {
+            //e.preventDefault()
+            const id = contenedor.getAttribute('numeroElemento')
+            console.log(`aqui toy en: ${id}`)
+            window.location.href = `update-topic.html?id=${id}`
+        });
 
+
+        section.appendChild(contenedor)
+        contenedor.appendChild(card)
+        contenedor.appendChild(boton)
         anchor.appendChild(span)
         cardTitle.appendChild(anchor)
         card.appendChild(cardTitle)
-        section.appendChild(card)
-
     })
 }
 
 obtenerDatosBackend()
+
