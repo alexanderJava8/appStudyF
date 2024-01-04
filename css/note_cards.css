@@ -126,4 +126,5 @@ main {
     grid-row: 2;
     margin-top: 10px;
     margin-left: 5px;
+    cursor: pointer;
 }
