@@ -111,11 +111,11 @@ main {
     margin-top: 12px;
 }
 
-.editar {
+.botones {
     text-decoration: none;
-    width: 67px;
-    height: 25px;
-    background-color: #0B5ED7;
+    width: 70px;
+    height: 24px;
+    background-color: #3C475D;
     color: white;
     display: flex;
     justify-content: center;
@@ -127,4 +127,12 @@ main {
     margin-top: 10px;
     margin-left: 5px;
     cursor: pointer;
+}
+
+.contenedorBotones {
+    display: flex;
+}
+
+.botonEliminar {
+    background-color: #CB3D3C;
 }

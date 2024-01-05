@@ -45,20 +45,27 @@ const mostrarDatosEnFrontend = (data) => {
         span.classList.add('theme-text')
         span.textContent = item.name
 
+        const contenedorBotones = document.createElement('div')
+        contenedorBotones.classList.add('contenedorBotones');
+
         const boton = document.createElement('a')
-        boton.classList.add('editar')
+        boton.classList.add('botones')
         boton.textContent = 'editar'
         boton.addEventListener('click', actualizar = (e) => {
-            //e.preventDefault()
             const id = contenedor.getAttribute('numeroElemento')
             console.log(`aqui toy en: ${id}`)
             window.location.href = `update-topic.html?id=${id}`
         });
 
+        const botonEliminar = document.createElement('a')
+        botonEliminar.classList.add('botones', 'botonEliminar')
+        botonEliminar.textContent = 'eliminar'
 
         section.appendChild(contenedor)
         contenedor.appendChild(card)
-        contenedor.appendChild(boton)
+        contenedor.appendChild(contenedorBotones)
+        contenedorBotones.appendChild(boton)
+        contenedorBotones.appendChild(botonEliminar)
         anchor.appendChild(span)
         cardTitle.appendChild(anchor)
         card.appendChild(cardTitle)
