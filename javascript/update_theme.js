@@ -1,9 +1,8 @@
-const parametrosId = new URLSearchParams(window.location.search)
-const id = parametrosId.get('id')
-
-console.log(`ve aqui esta: ${id}`)
-
 const actualizarTema = () => {
+    const parametrosId = new URLSearchParams(window.location.search)
+    const id = parametrosId.get('id')
+
+
     const nombreTema = document.getElementById('materia').value;
     const backendUrl = 'http://localhost:8080/api/v1/topics';
 

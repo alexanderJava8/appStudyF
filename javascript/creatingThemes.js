@@ -51,7 +51,7 @@ const mostrarDatosEnFrontend = (data) => {
         const boton = document.createElement('a')
         boton.classList.add('botones')
         boton.textContent = 'editar'
-        boton.addEventListener('click', actualizar = (e) => {
+        boton.addEventListener('click', actualizar = () => {
             const id = contenedor.getAttribute('numeroElemento')
             console.log(`aqui toy en: ${id}`)
             window.location.href = `update-topic.html?id=${id}`
@@ -60,7 +60,11 @@ const mostrarDatosEnFrontend = (data) => {
         const botonEliminar = document.createElement('a')
         botonEliminar.classList.add('botones', 'botonEliminar')
         botonEliminar.textContent = 'eliminar'
-
+        botonEliminar.addEventListener('click', () => {
+            const id = contenedor.getAttribute('numeroElemento')
+            eliminarTema(id)           
+        })
+        
         section.appendChild(contenedor)
         contenedor.appendChild(card)
         contenedor.appendChild(contenedorBotones)
@@ -74,3 +78,23 @@ const mostrarDatosEnFrontend = (data) => {
 
 obtenerDatosBackend()
 
+const eliminarTema = (id) => {
+    const backendURL = `http://localhost:8080/api/v1/topics/${id}`
+
+    fetch(backendURL, {
+        method: 'DELETE'
+    })
+    .then(response => {
+        if(response.ok) {
+            return response.ok
+        }
+
+        throw new Error("network del backend")
+    })
+    .then(() => { 
+        window.location.href = '../html/topics_cards.html'
+    })
+    .catch(error => {
+        console.log("hubo problema con el fetch", error)
+    })
+}
