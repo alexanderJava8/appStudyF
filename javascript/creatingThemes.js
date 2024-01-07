@@ -30,22 +30,23 @@ const mostrarDatosEnFrontend = (data) => {
         const contenedor = document.createElement('div')
         contenedor.classList.add('contenedor')
         contenedor.setAttribute('numeroElemento', item.id)
-
+        
         const card = document.createElement('div')
         card.classList.add('card')
 
         const cardTitle = document.createElement('div')
         cardTitle.classList.add('card-title')
+        cardTitle.innerText = item.name
 
-        const anchor = document.createElement('a')
-        anchor.classList.add('theme-link')
-        anchor.href = 'notes.html'
+        cardTitle.addEventListener('click', () => {
+            const id = contenedor.getAttribute('numeroElemento')
+            const nameTheme = cardTitle.textContent;
+            console.log(`aqui es:${id} ${nameTheme}`)
 
-        const span = document.createElement('span')
-        span.classList.add('theme-text')
-        span.textContent = item.name
+            window.location.href = `notes.html?id=${encodeURIComponent(id)}&name=${encodeURIComponent(nameTheme)}`
+        });
 
-        const contenedorBotones = document.createElement('div')
+        const contenedorBotones = document.createElement('div');
         contenedorBotones.classList.add('contenedorBotones');
 
         const boton = document.createElement('a')
@@ -70,8 +71,6 @@ const mostrarDatosEnFrontend = (data) => {
         contenedor.appendChild(contenedorBotones)
         contenedorBotones.appendChild(boton)
         contenedorBotones.appendChild(botonEliminar)
-        anchor.appendChild(span)
-        cardTitle.appendChild(anchor)
         card.appendChild(cardTitle)
     })
 }

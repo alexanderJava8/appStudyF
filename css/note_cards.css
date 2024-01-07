@@ -68,7 +68,7 @@ main {
     width: 100%;
 }
 
-.card-title > a {
+.card-title {
     text-decoration: none;
     font-weight: 700;
     color: white;
@@ -89,7 +89,7 @@ main {
     color: black;
 }
 
-.card:hover .card-title > a {
+.card:hover .card-title {
     color: black;
     font-weight: 500;
 }
