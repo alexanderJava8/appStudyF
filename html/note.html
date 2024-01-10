@@ -2,46 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Nota 1. Matematica</title>
+    <title></title>
     <link rel="stylesheet" href="../css/note.css">
+    <script>
+        tinymce.init({
+          selector: '#mytextarea'
+        });
+      </script>
 </head>
 <body>
     <h1 class="title-nota">Titulo de la nota</h1>
-
-    <!--contenido de la nota-->
-    <section class="section-note">
-        <p>
-            Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Amet explicabo i
-            nventore quaerat quam rerum. Accusantium aliquid ea
-            eveniet facilis molestias, nobis offi
-            cia possimus quia quos sint soluta ut vel, voluptas?
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
-            usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-             minim veniam, quis nostrud exercitation ullamco laboris nisi ut ali
-             quip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-              in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exc
-              epteur sint occaecat cupidata
-            t non proident, sunt in culpa qui officia deserunt mollit anim id est
-             laborum.
-        </p>
-
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do ei
-            usmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-             minim veniam, quis nostrud exercitation ullamco laboris nisi ut ali
-             quip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-              in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Exc
-              epteur sint occaecat cupidata
-            t non proident, sunt in culpa qui officia deserunt mollit anim id est
-             laborum.
-        </p>
-        <a href="notes.html" class="enlace">Volver</a>
-
-    </section>
-    
+     <section class="section-note">
+       <textarea 
+         id="miTextArea" 
+         class="study-notes"
+         placeholder = "Escribe aquí..."
+         >
+        </textarea>
+        <button class="boton" id="boton">guardar</button>
+      </section>
 </body>
 </html>
