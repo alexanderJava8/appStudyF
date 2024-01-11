@@ -52,10 +52,10 @@ body {
 
 .boton {
   text-decoration: none;
-  width: 70px;
-  height: 25px;
+  width: 72px;
+  height: 27px;
   background-color: #FEBC38;
-  color: white;
+  color: #000000;
   display: flex;
   justify-content: center;
   align-items: center;
