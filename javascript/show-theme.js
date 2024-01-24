@@ -32,17 +32,15 @@ const showTopics = () => {
 
 
 const mostrarDatos = (data) => {
-
-
-    const commentsHTML = data.map(item => `
+    const commentsHTML = data.map( item => `
     <div class="contenedor" id="${item.id}">
-    <article class="notes">
-                <h4 class="notes-intro">${item.comment.trim().substring(0, 10)}</h4>
-            </article>
-            <div class="contenedor-botones">
+        <article class="notes notes-intro" id="notes">
+            ${item.comment.trim().substring(0, 10)}
+        </article>
+        <div class="contenedor-botones">
             <button class="eliminar botones">eliminar</button>
-            </div>
-            </div>   
+        </div>
+     </div>   
      `)
             
             const container = document.getElementById('container')
