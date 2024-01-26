@@ -6,7 +6,6 @@
 
 .container {
     height: 100vh;
-    /*background-color: #1D2126;*/
     background-color: #000000;
     position: relative;
     display: flex;
@@ -35,17 +34,20 @@
     padding-top: 10px;
 }
 
-.fa-note-sticky {
-    font-size: 3em;
-    color: white;
+span.icon {
+    font-size: 75px;
+    cursor: pointer;
+    color: #FEFEFE;
     transition: all 0.5s;
-    height: 20px;
 }
 
-.fa-note-sticky:hover {
-    transform: scale(1.2);
+.icon:hover {
     color: #FEBC38;
+    transform: scale(1.2);
 }
 
-
-
+.contenedor-icon {
+    width: 250px;
+    display: flex;
+    justify-content: space-around;
+}
