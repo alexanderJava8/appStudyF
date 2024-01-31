@@ -5,8 +5,16 @@ let tiempoInicio
 let tiempoTranscurrido
 
 const iniciarCronometro = () => {
-     tiempoInicio = new Date().getTime()
-    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
+    if(document.getElementById("iniciar").textContent == "Iniciar" && document.getElementById("tiempo-cronometro").textContent == "00:00:00") {
+        tiempoInicio = new Date().getTime()
+        interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
+        document.getElementById("iniciar").textContent = "Parar"
+    } else if (document.getElementById("tiempo-cronometro").textContent != "00:00:00" && document.getElementById("iniciar").textContent == "Parar") {
+        document.getElementById("iniciar").textContent = "Iniciar"
+         detenerCronometro()
+    } else {
+        vuelveACronometro()
+    }
 }
 
 const actualizarCronometro = (tiempoInicio) => {
@@ -34,7 +42,6 @@ const actualizarCronometro = (tiempoInicio) => {
 
 const botonIniciar = document.getElementById("iniciar")
 botonIniciar.addEventListener("click", iniciarCronometro)
-//hasta aqui el codigo para empezar el cronometro
 
 //codigo detener el cronometro al presionar el boton detener
 const detenerCronometro = () => {
@@ -42,26 +49,19 @@ const detenerCronometro = () => {
     tiempoDetenido = tiempoTranscurrido;
 }
 
-const botondetenerCronometro = document.getElementById("detener")
-botondetenerCronometro.addEventListener("click", detenerCronometro)
-//finaliza codigo detener cronometro
-
-//codigo reiniciar cronometro
-const reiniciarCronometro = () => {
+//este es para volver activo nuevamente el cronometro
+const vuelveACronometro = () => {
     clearInterval(interval)
     tiempoInicio = new Date().getTime() - tiempoDetenido;
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
+    document.getElementById("iniciar").textContent = "Parar"
 }
 
-const botonReiniciar = document.getElementById("reiniciar");
-botonReiniciar.addEventListener("click", reiniciarCronometro);
-//finaliza codigo reiniciar
 const reiniciaCero = () => {
     clearInterval(interval)
-    tiempoInicio = new Date().getTime()
-    iniciarCronometro()
+    document.getElementById("tiempo-cronometro").innerText = "00:00:00"
 }
 
-const botonCeroNuevamente = document.getElementById("volver-a-empezar")
-botonCeroNuevamente.addEventListener("click", reiniciaCero)
+const botonCeroNuevamente = document.getElementById("reiniciar")
+botonCeroNuevamente.addEventListener("click", () => reiniciaCero())
 
