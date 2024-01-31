@@ -4,16 +4,43 @@ let tiempoDetenido = 0;
 let tiempoInicio
 let tiempoTranscurrido
 
+const cronometroIniciar = () => {
+    tiempoInicio = new Date().getTime()
+    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
+    document.getElementById("iniciar").textContent = "Parar"
+}
+
+const detenerCronometro = () => {
+    document.getElementById("iniciar").textContent = "Iniciar"
+    clearInterval(interval)
+    tiempoDetenido = tiempoTranscurrido;
+}
+
+const VolverCronometroCero = () => {
+    clearInterval(interval)
+    tiempoInicio = new Date().getTime() - tiempoDetenido;
+    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
+    document.getElementById("iniciar").textContent = "Parar"
+}
+
+const reiniciaCero = () => {
+    clearInterval(interval)
+    document.getElementById("tiempo-cronometro").innerText = "00:00:00"
+}
+
+const botonCeroNuevamente = document.getElementById("reiniciar")
+botonCeroNuevamente.addEventListener("click", () => reiniciaCero())
+
 const iniciarCronometro = () => {
-    if(document.getElementById("iniciar").textContent == "Iniciar" && document.getElementById("tiempo-cronometro").textContent == "00:00:00") {
-        tiempoInicio = new Date().getTime()
-        interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
-        document.getElementById("iniciar").textContent = "Parar"
-    } else if (document.getElementById("tiempo-cronometro").textContent != "00:00:00" && document.getElementById("iniciar").textContent == "Parar") {
-        document.getElementById("iniciar").textContent = "Iniciar"
-         detenerCronometro()
+    const botonIniciar = document.getElementById("iniciar")
+    const tiempoCronometro = document.getElementById("tiempo-cronometro")
+
+    if(botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:00") {
+        cronometroIniciar()
+    } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Parar") {
+        detenerCronometro()
     } else {
-        vuelveACronometro()
+        VolverCronometroCero()
     }
 }
 
@@ -43,25 +70,7 @@ const actualizarCronometro = (tiempoInicio) => {
 const botonIniciar = document.getElementById("iniciar")
 botonIniciar.addEventListener("click", iniciarCronometro)
 
-//codigo detener el cronometro al presionar el boton detener
-const detenerCronometro = () => {
-    clearInterval(interval)
-    tiempoDetenido = tiempoTranscurrido;
-}
 
-//este es para volver activo nuevamente el cronometro
-const vuelveACronometro = () => {
-    clearInterval(interval)
-    tiempoInicio = new Date().getTime() - tiempoDetenido;
-    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
-    document.getElementById("iniciar").textContent = "Parar"
-}
 
-const reiniciaCero = () => {
-    clearInterval(interval)
-    document.getElementById("tiempo-cronometro").innerText = "00:00:00"
-}
 
-const botonCeroNuevamente = document.getElementById("reiniciar")
-botonCeroNuevamente.addEventListener("click", () => reiniciaCero())
 
