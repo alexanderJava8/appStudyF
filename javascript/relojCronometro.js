@@ -7,7 +7,7 @@ let tiempoTranscurrido
 const cronometroIniciar = () => {
     tiempoInicio = new Date().getTime()
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
-    document.getElementById("iniciar").textContent = "Parar"
+    document.getElementById("iniciar").textContent = "Pausar"
 }
 
 const detenerCronometro = () => {
@@ -20,7 +20,7 @@ const VolverCronometroCero = () => {
     clearInterval(interval)
     tiempoInicio = new Date().getTime() - tiempoDetenido;
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
-    document.getElementById("iniciar").textContent = "Parar"
+    document.getElementById("iniciar").textContent = "Pausar"
 }
 
 const reiniciaCero = () => {
@@ -37,7 +37,7 @@ const iniciarCronometro = () => {
 
     if(botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:00") {
         cronometroIniciar()
-    } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Parar") {
+    } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Pausar") {
         detenerCronometro()
     } else {
         VolverCronometroCero()
