@@ -77,6 +77,7 @@ const actualizarCronometro = (tiempoInicio) => {
         + colocarCeroIzquierda(segundosMostrar);
 
      document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
+     document.querySelector("title").innerText = tiempoFormateado
 }
 
 const botonIniciar = document.getElementById("iniciar")
