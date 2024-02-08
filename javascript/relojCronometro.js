@@ -1,24 +1,28 @@
 //empezar cronometro
 let interval
-let tiempoDetenido = 0;
+let tiempoDetenido = 0
 let tiempoInicio
-let tiempoTranscurrido
+let tiempoTranscurrido = 0
 
 const cronometroIniciar = () => {
+    clearInterval(interval)
     tiempoInicio = new Date().getTime()
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
     document.getElementById("iniciar").textContent = "Pausar"
 }
 
 const detenerCronometro = () => {
-    document.getElementById("iniciar").textContent = "Iniciar"
     clearInterval(interval)
-    tiempoDetenido = tiempoTranscurrido;
+    document.getElementById("iniciar").textContent = "Iniciar"
+    tiempoDetenido = tiempoTranscurrido
+    console.log("tiempo detenido:", tiempoDetenido)
+    localStorage.setItem("tiempoDetenido", tiempoDetenido)
 }
 
-const VolverCronometroCero = () => {
+const reiniciarCronometro = () => {
     clearInterval(interval)
     tiempoInicio = new Date().getTime() - tiempoDetenido;
+    localStorage.setItem("tiempoInicio", tiempoInicio)
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
     document.getElementById("iniciar").textContent = "Pausar"
 }
@@ -26,6 +30,9 @@ const VolverCronometroCero = () => {
 const reiniciaCero = () => {
     clearInterval(interval)
     document.getElementById("tiempo-cronometro").innerText = "00:00:00"
+    localStorage.removeItem("tiempoDetenido")
+    localStorage.removeItem("tiempoInicio")
+    localStorage.removeItem("tiempoTranscurrido")
 }
 
 const botonCeroNuevamente = document.getElementById("reiniciar")
@@ -40,13 +47,14 @@ const iniciarCronometro = () => {
     } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Pausar") {
         detenerCronometro()
     } else {
-        VolverCronometroCero()
+        reiniciarCronometro()
     }
 }
 
 const actualizarCronometro = (tiempoInicio) => {
     const tiempoActual = new Date().getTime()
     tiempoTranscurrido = tiempoActual- tiempoInicio
+    localStorage.setItem("tiempoTranscurrido", tiempoTranscurrido)
 
     const segundos = Math.floor(tiempoTranscurrido / 1000)
     const minutos = Math.floor(segundos / 60)
@@ -56,6 +64,10 @@ const actualizarCronometro = (tiempoInicio) => {
     const minutosMostrar = minutos % 60;
     const horasMostrar = horas % 24;
 
+    console.log("segundos", segundosMostrar)
+    console.log("minutos", minutosMostrar)
+    console.log("horas", horasMostrar)
+    
     const colocarCeroIzquierda = (number) => {
         return number < 10 ? '0' + number : number;
     }
@@ -64,12 +76,21 @@ const actualizarCronometro = (tiempoInicio) => {
         + colocarCeroIzquierda(minutosMostrar) + ':' 
         + colocarCeroIzquierda(segundosMostrar);
 
-        document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
+     document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
 }
 
 const botonIniciar = document.getElementById("iniciar")
 botonIniciar.addEventListener("click", iniciarCronometro)
 
+window.addEventListener("load", () => {
+    tiempoDetenido = localStorage.getItem("tiempoTranscurrido") // vuelve con este valor de aqui
+
+    clearInterval(interval)
+    tiempoInicio = new Date().getTime() - tiempoDetenido
+    localStorage.setItem("tiempoInicio", tiempoInicio)
+    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
+    document.getElementById("iniciar").textContent = "Pausar"
+})
 
 
 
