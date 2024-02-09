@@ -1,4 +1,3 @@
-//empezar cronometro
 let interval
 let tiempoDetenido = 0
 let tiempoInicio
@@ -8,14 +7,15 @@ const cronometroIniciar = () => {
     clearInterval(interval)
     tiempoInicio = new Date().getTime()
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
-    document.getElementById("iniciar").textContent = "Pausar"
+    localStorage.setItem("estadoBoton", "Pausar")
+    document.getElementById("iniciar").textContent = localStorage.getItem("estadoBoton")
 }
 
 const detenerCronometro = () => {
     clearInterval(interval)
-    document.getElementById("iniciar").textContent = "Iniciar"
+    localStorage.setItem("estadoBoton", "Iniciar")
+    document.getElementById("iniciar").textContent = localStorage.getItem("estadoBoton")
     tiempoDetenido = tiempoTranscurrido
-    console.log("tiempo detenido:", tiempoDetenido)
     localStorage.setItem("tiempoDetenido", tiempoDetenido)
 }
 
@@ -24,19 +24,25 @@ const reiniciarCronometro = () => {
     tiempoInicio = new Date().getTime() - tiempoDetenido;
     localStorage.setItem("tiempoInicio", tiempoInicio)
     interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000);
-    document.getElementById("iniciar").textContent = "Pausar"
+
+    localStorage.setItem("estadoBoton", "Pausar")
+    document.getElementById("iniciar").textContent = localStorage.getItem("estadoBoton")
 }
 
-const reiniciaCero = () => {
+const reiniciarAcero = () => {
     clearInterval(interval)
     document.getElementById("tiempo-cronometro").innerText = "00:00:00"
     localStorage.removeItem("tiempoDetenido")
     localStorage.removeItem("tiempoInicio")
     localStorage.removeItem("tiempoTranscurrido")
+    document.querySelector("title").innerText = `00:00:00 - cronómetro online`
+
+    localStorage.setItem("estadoBoton", "Iniciar")
+    document.getElementById("iniciar").textContent = localStorage.getItem("estadoBoton")
 }
 
 const botonCeroNuevamente = document.getElementById("reiniciar")
-botonCeroNuevamente.addEventListener("click", () => reiniciaCero())
+botonCeroNuevamente.addEventListener("click", () => reiniciarAcero())
 
 const iniciarCronometro = () => {
     const botonIniciar = document.getElementById("iniciar")
@@ -51,11 +57,7 @@ const iniciarCronometro = () => {
     }
 }
 
-const actualizarCronometro = (tiempoInicio) => {
-    const tiempoActual = new Date().getTime()
-    tiempoTranscurrido = tiempoActual- tiempoInicio
-    localStorage.setItem("tiempoTranscurrido", tiempoTranscurrido)
-
+const formatearFecha = (tiempoTranscurrido) => {
     const segundos = Math.floor(tiempoTranscurrido / 1000)
     const minutos = Math.floor(segundos / 60)
     const horas = Math.floor(minutos / 24)
@@ -63,18 +65,22 @@ const actualizarCronometro = (tiempoInicio) => {
     const segundosMostrar = segundos % 60;
     const minutosMostrar = minutos % 60;
     const horasMostrar = horas % 24;
-
-    console.log("segundos", segundosMostrar)
-    console.log("minutos", minutosMostrar)
-    console.log("horas", horasMostrar)
     
     const colocarCeroIzquierda = (number) => {
         return number < 10 ? '0' + number : number;
     }
 
-    const tiempoFormateado = colocarCeroIzquierda(horasMostrar) + ':' 
-        + colocarCeroIzquierda(minutosMostrar) + ':' 
-        + colocarCeroIzquierda(segundosMostrar);
+    return colocarCeroIzquierda(horasMostrar) + ':' 
+            + colocarCeroIzquierda(minutosMostrar) + ':' 
+            + colocarCeroIzquierda(segundosMostrar);
+}    
+
+const actualizarCronometro = (tiempoInicio) => {
+    const tiempoActual = new Date().getTime()
+    tiempoTranscurrido = tiempoActual- tiempoInicio
+    localStorage.setItem("tiempoTranscurrido", tiempoTranscurrido)
+
+     const tiempoFormateado = formatearFecha(tiempoTranscurrido)
 
      document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
      document.querySelector("title").innerText = `${tiempoFormateado} - cronómetro online`
@@ -86,11 +92,19 @@ botonIniciar.addEventListener("click", iniciarCronometro)
 window.addEventListener("load", () => {
     tiempoDetenido = localStorage.getItem("tiempoTranscurrido") // vuelve con este valor de aqui
 
-    clearInterval(interval)
     tiempoInicio = new Date().getTime() - tiempoDetenido
     localStorage.setItem("tiempoInicio", tiempoInicio)
-    interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
-    document.getElementById("iniciar").textContent = "Pausar"
+    
+    if(localStorage.getItem("estadoBoton") === "Pausar") {
+            clearInterval(interval)
+            document.getElementById("iniciar").textContent = "Pausar"
+            interval = setInterval(() => actualizarCronometro(tiempoInicio), 1000)
+     }
+
+    if(localStorage.getItem("estadoBoton") === "Iniciar") {
+        document.getElementById("tiempo-cronometro").innerText = formatearFecha(tiempoDetenido)
+        document.querySelector("title").innerText = `${formatearFecha(tiempoDetenido)} - cronómetro online`
+    } 
 })
 
 
