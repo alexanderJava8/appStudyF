@@ -77,7 +77,7 @@ const formatearFecha = (tiempoTranscurrido) => {
 
 const actualizarCronometro = (tiempoInicio) => {
     const tiempoActual = new Date().getTime()
-    tiempoTranscurrido = tiempoActual- tiempoInicio
+    tiempoTranscurrido = tiempoActual - tiempoInicio
     localStorage.setItem("tiempoTranscurrido", tiempoTranscurrido)
 
      const tiempoFormateado = formatearFecha(tiempoTranscurrido)

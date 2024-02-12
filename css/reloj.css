@@ -26,7 +26,6 @@ body {
   border: solid 1px #dfdfdf;
   width: 180px;
   cursor: pointer;
-  /*revisar para eliminar luego;*/
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -97,5 +96,13 @@ body {
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+}
 
+.reloj-item {
+    border: solid 1px #febc38;
+}
+
+.reloj-item > span,
+.reloj-item .text {
+    color: #FEBC38;
 }
