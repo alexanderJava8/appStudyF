@@ -2,18 +2,28 @@ let interval
 let tiempoDetenido = 0
 let tiempoInicio
 let tiempoTranscurrido = 0
-
+let segundosTotales
 
 const pomodoroIniciar = () => {
     clearInterval(interval)
-    tiempoInicio = new Date().getTime()
-    interval = setInterval(() => actualizarPomodoro(tiempoInicio), 1000)
+    const tiempoPomodoro = document.getElementById("tiempo-cronometro")
+    const tiempoTexto = tiempoPomodoro.textContent
+    const partesTiempo = tiempoTexto.split(":")
+
+    const horas = parseInt(partesTiempo[0]);
+    const minutos = parseInt(partesTiempo[1]);
+    const segundos = parseInt(partesTiempo[2]);
+
+    segundosTotales = (horas * 3600) + (minutos * 60) + segundos
+
+    interval = setInterval(() => actualizarPomodoro(segundosTotales), 1000)
     localStorage.setItem("estadoBotonPomodoro", "Pausar")
     document.getElementById("iniciar").textContent = localStorage.getItem("estadoBotonPomodoro")
 }
 
 const detenerPomodoro = () => {
     clearInterval(interval)
+    console.log("estoy en metodo detener pomodoro con un segundos:", segundosTotales)
     localStorage.setItem("estadoBotonPomodoro", "Iniciar")
     document.getElementById("iniciar").textContent = localStorage.getItem("estadoBotonPomodoro")
     tiempoDetenido = tiempoTranscurrido
@@ -22,18 +32,19 @@ const detenerPomodoro = () => {
 
 const reiniciarPomodoro = () => {
     clearInterval(interval)
-    tiempoInicio = new Date().getTime() -tiempoDetenido
+    console.log("estoy en metodo reiniciarpomodoro")
+    console.log("segundos totales",segundosTotales)
     localStorage.setItem("tiempoInicioPomodoro", tiempoInicio)
-    interval = setInterval(() => actualizarPomodoro(tiempoInicio), 1000)
-
+    interval = setInterval(() => actualizarPomodoro(segundosTotales), 1000)
+    console.log("segundots totales", segundosTotales)
     localStorage.setItem("estadoBotonPomodoro", "Pausar")
     document.getElementById("iniciar").textContent = localStorage.getItem("estadoBotonPomodoro")
-}
+}   
 
-const formatearFecha = (tiempoTranscurrido) => {
-    const segundos = Math.floor(tiempoTranscurrido / 1000)
+const formatearFecha = (tiempoTranscurridoEnSegundos) => {
+    const segundos = Math.floor(tiempoTranscurridoEnSegundos)
     const minutos = Math.floor(segundos / 60)
-    const horas = Math.floor(minutos / 24)
+    const horas = Math.floor(minutos / 60)
 
     const segundosMostrar = segundos % 60;
     const minutosMostrar = minutos % 60;
@@ -48,21 +59,28 @@ const formatearFecha = (tiempoTranscurrido) => {
     + colocarCeroIzquierda(segundosMostrar);
 }
 
-const actualizarPomodoro = (tiempoInicio) => {
-    const tiempoActual = new Date().getTime()
-    tiempoTranscurrido = tiempoActual - tiempoInicio
+const actualizarPomodoro = (tiempoInicio) => { 
+    segundosTotales--
+
+    if(segundosTotales <= 0) {
+        clearInterval(interval)
+    }
+
+    console.log("estoy en metodo actualizarpomodor", tiempoInicio)
+    tiempoInicio = tiempoInicio - 1
+    tiempoTranscurrido = tiempoInicio 
     localStorage.setItem("tiempoTranscurridoPomodoro", tiempoTranscurrido)
     const tiempoFormateado = formatearFecha(tiempoTranscurrido)
 
-     document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
-     document.querySelector("title").innerText = `${tiempoFormateado} - cronómetro online`
+    document.getElementById("tiempo-cronometro").innerText = tiempoFormateado
+    document.querySelector("title").innerText = `${tiempoFormateado} - pomodoro online`
 }
 
 const iniciarPomodoro = () => {
     const botonIniciar = document.getElementById("iniciar")
     const tiempoCronometro = document.getElementById("tiempo-cronometro")
 
-    if(botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:25:00") {
+    if(botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:05") {
         pomodoroIniciar()
     } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Pausar") {
         detenerPomodoro()
@@ -74,3 +92,8 @@ const iniciarPomodoro = () => {
 const botonIniciar = document.getElementById("iniciar")
 botonIniciar.addEventListener("click", iniciarPomodoro)
 
+window.addEventListener("load", () => {
+    localStorage.removeItem("tiempoDetenidoPomodoro")
+    localStorage.removeItem("tiempoInicioPomodoro")
+    localStorage.removeItem("tiempoTranscurridoPomodoro")
+})
