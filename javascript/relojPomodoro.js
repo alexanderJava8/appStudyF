@@ -108,20 +108,32 @@ contenedorBotonesPomodoro.addEventListener("click", (evento) => {
 })
 
 const mostrarPomodor = () => {
+    document.getElementById("boton-descanso").classList.remove("boton-escogido")
+    document.getElementById("boton-descanso").classList.add("btn")
+
     contenedor.innerHTML = `
     <p id="tiempo-cronometro">00:00:10</p>
     <div class="botons-container">
         <button class="start-btn btn" id="iniciar">Iniciar</button>
     </div>`
+
+    document.getElementById("boton-pomodoro").classList.add("boton-escogido")
+    document.getElementById("boton-pomodoro").classList.remove("btn")
     botonesParaIniciar()
 }
 
 const mostrarDescanso = () => {
+    document.getElementById("boton-pomodoro").classList.remove("boton-escogido")
+    document.getElementById("boton-pomodoro").classList.add("btn")
+
     contenedor.innerHTML = `
     <p id="tiempo-cronometro">00:00:05</p>
     <div class="botons-container">
         <button class="start-btn btn" id="iniciar">Iniciar</button>
     </div>`
+
+    document.getElementById("boton-descanso").classList.add("boton-escogido")
+    document.getElementById("boton-descanso").classList.remove("btn")
     botonesParaIniciar()
 }
 

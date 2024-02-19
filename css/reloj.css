@@ -137,3 +137,20 @@ body {
   justify-content: space-around;
 }
 
+/*esta clase es la que colocare cuando este sobre el boton estudiar o
+descansar.
+Eliminar luego.
+*/
+.boton-escogido {
+  border: none;
+  border-radius: 5px;
+  margin: 2px;
+  cursor: pointer;
+  transition: all 0.1s;
+  letter-spacing: 1px;
+  background-color: aliceblue;
+  height: 25px;
+  font-weight: 600;
+  width: 85px;
+}
+
