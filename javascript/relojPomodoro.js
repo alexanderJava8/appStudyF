@@ -64,6 +64,13 @@ const actualizarPomodoro = (tiempoInicio) => {
 
     if(segundosTotales <= 0) {
         clearInterval(interval)
+        const sonido = document.getElementById("audio")
+        sonido.currentTime = 0
+        sonido.play()
+
+        setTimeout(function()  {
+            sonido.pause()
+        }, 5000)
     }
 
     console.log("estoy en metodo actualizarpomodor", tiempoInicio)
