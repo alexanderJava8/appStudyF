@@ -80,7 +80,10 @@ const iniciarPomodoro = () => {
     const botonIniciar = document.getElementById("iniciar")
     const tiempoCronometro = document.getElementById("tiempo-cronometro")
 
-    if(botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:05") {
+    const inicioPomodoro = botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:10"
+    const descansoPomodoro = botonIniciar.textContent == "Iniciar" && tiempoCronometro.textContent == "00:00:05"
+
+    if(inicioPomodoro || descansoPomodoro) {
         pomodoroIniciar()
     } else if (tiempoCronometro.textContent != "00:00:00" && botonIniciar.textContent == "Pausar") {
         detenerPomodoro()
@@ -89,11 +92,41 @@ const iniciarPomodoro = () => {
     }
 }
 
-const botonIniciar = document.getElementById("iniciar")
-botonIniciar.addEventListener("click", iniciarPomodoro)
-
 window.addEventListener("load", () => {
     localStorage.removeItem("tiempoDetenidoPomodoro")
     localStorage.removeItem("tiempoInicioPomodoro")
     localStorage.removeItem("tiempoTranscurridoPomodoro")
 })
+
+//logica pomodoro
+const contenedorBotonesPomodoro = document.getElementById("botones-pomodoro")
+const contenedor = document.getElementById("contenedor")
+
+contenedorBotonesPomodoro.addEventListener("click", (evento) => {
+    const elemento = evento.target;
+    elemento.id === "boton-pomodoro" ? mostrarPomodor() : mostrarDescanso()
+})
+
+const mostrarPomodor = () => {
+    contenedor.innerHTML = `
+    <p id="tiempo-cronometro">00:00:10</p>
+    <div class="botons-container">
+        <button class="start-btn btn" id="iniciar">Iniciar</button>
+    </div>`
+    botonesParaIniciar()
+}
+
+const mostrarDescanso = () => {
+    contenedor.innerHTML = `
+    <p id="tiempo-cronometro">00:00:05</p>
+    <div class="botons-container">
+        <button class="start-btn btn" id="iniciar">Iniciar</button>
+    </div>`
+    botonesParaIniciar()
+}
+
+const botonesParaIniciar = () => {
+    const botonIniciar = document.getElementById("iniciar")
+    botonIniciar.addEventListener("click", iniciarPomodoro)
+    console.log(botonIniciar)
+}
