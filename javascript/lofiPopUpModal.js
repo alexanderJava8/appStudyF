@@ -1,6 +1,6 @@
 const openModalBoton = document.getElementById("open-modal")
 const modalWindowOverlay = document.getElementById("modal-overlay")
-const botonCerrarModal = document.getElementById("close-modal")
+const botonCerrarModal = document.getElementById("boton-cerrar")
 
 const showModalWindow = () => {
     modalWindowOverlay.style.display = 'flex'
