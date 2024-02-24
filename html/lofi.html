@@ -18,10 +18,25 @@
     <main class="container" id="container">
         <div class="item" id="item">
             <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
-        </div>
-        <div class="item" id="item">
-            <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
-        </div>
+            <div class="contenedorBotones">
+                <button class="botones">editar</button>
+                <button class="botones botonEliminar">eliminar</button>
+            </div>
+            </div>
+            <div class="item" id="item">
+                <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
+                <div class="contenedorBotones">
+                    <button class="botones">editar</button>
+                    <button class="botones botonEliminar">eliminar</button>
+                </div>
+                </div>
+                <div class="item" id="item">
+                    <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
+                    <div class="contenedorBotones">
+                        <button class="botones">editar</button>
+                        <button class="botones botonEliminar">eliminar</button>
+                    </div>
+            </div>
     </main>
     <button class="btn-video" id="open-modal">Nuevo</button>
     <!--Este es el bloque html pop up-->
@@ -33,13 +48,14 @@
             <div class="modal-nuevo-video">
                 <span class="material-symbols-outlined icon-cerrar-x" id="boton-cerrar">close</span>
                 <div class="modal-inputs">
-                    <input type="text" placeholder="Enlace Youtube" class="entrada-input-video input-video">
-                    <input type="text" placeholder="Nombre Video" class="entrada-input-nombrevideo input-video">
+                    <input type="text" placeholder="Enlace Youtube" class="entrada-input-video input-video" id="link-video">
                     <button class="btn-guardar-video" id="btn-guardar">Guardar</button>
                 </div>
             </div>
         </section>
         </div>
+    <!--aqui acaba el bloque pop up-->
      <script src="../javascript/lofiPopUpModal.js"></script>
+    <script src="../javascript/sendVideo.js"></script>
 </body>
 </html>

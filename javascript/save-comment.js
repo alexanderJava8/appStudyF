@@ -27,7 +27,7 @@ const saveComment = () => {
         if(response.ok) {
             return response.json()
         }
-        throw new Error("newtqork del backend")
+        throw new Error("Network del backend")
     })
 .then(data => {
     console.log("respuesta backend:", data)
