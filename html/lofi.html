@@ -17,22 +17,22 @@
     </header>
     <main class="container" id="container">
         <div class="item" id="item">
-            <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
+            <iframe src="https://www.youtube.com/embed/t0Li2PW2Tdo" frameborder="0"></iframe>
             <div class="contenedorBotones">
-                <button class="botones">editar</button>
-                <button class="botones botonEliminar">eliminar</button>
-            </div>
-            </div>
-            <div class="item" id="item">
-                <iframe src="https://www.youtube.com/embed/5g39HtVb20k" frameborder="0"></iframe>
-                <div class="contenedorBotones">
-                    <button class="botones">editar</button>
-                    <button class="botones botonEliminar">eliminar</button>
+                <button class="botones" id="btn-editar">editar</button>
+                <button class="botones botonEliminar" id="btn-eliminar">eliminar</button>
+                </div>
+                </div>
+                <div class="item" id="item">
+            <iframe src="https://www.youtube.com/embed/LIlcLP0fx6w" frameborder="0"></iframe>
+            <div class="contenedorBotones">
+                <button class="botones" id="btn-editar">editar</button>
+                <button class="botones botonEliminar" id="btn-eliminar">eliminar</button>
                 </div>
                 </div>
     </main>
     <button class="btn-video" id="open-modal">Nuevo</button>
-    <!--Este es el bloque html pop up-->
+    <!--Este es el bloque html pop up guardar-->
     <div class="modal-overlay" id="modal-overlay">
         <section id="modal" class="modal">
             <div class="modal-img-contenedor">
@@ -46,9 +46,41 @@
                 </div>
             </div>
         </section>
-        </div>
-    <!--aqui acaba el bloque pop up-->
-     <script src="../javascript/lofiPopUpModal.js"></script>
+    </div>
+    <!--aqui acaba el bloque pop up guardar-->
+    <!--aqui empieza el pop-up para editar el video-->
+    <div class="modal-overlay" id="modal-overlay-update">
+        <section class="modal" id="modal-update">
+            <div class="modal-img-contenedor">
+                <img src="../img/salon.jpg" alt="lofiChico" class="modal-img">
+            </div>
+    
+            <div class="modal-nuevo-video">
+                <span class="material-symbols-outlined icon-cerrar-x" id="boton-cerrar">close</span>
+                <div class="modal-inputs">
+                    <input type="text" placeholder="Enlace Youtube" class="entrada-input-video" id="link-video">
+                    <button class="btn-guardar-video" id="btn-update">Guardar</button>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!--aqui finaliza el pop-up para editar el video-->
+    <!--aqui comienza el pop-up para eliminar el video-->
+    <div class="modal-overlay" id="modal-overlay-deleted">
+        <section class="modal-eliminar" id="modal-deleted">
+            <h1>Estas seguro de eliminar el video</h1>
+            <div class="contenedor-botones">
+                <button class="botonEliminar botones contenedor-botones-personalizar">Eliminar</button>
+                <button class="botones contenedor-botones-personalizar">Cancelar</button>
+            </div>
+        </section>
+    </div>
+    <!--aqui finaliza el pop-up para eliminar el video-->
+    
+    <script src="../javascript/lofiPopUpModal.js"></script>
     <script src="../javascript/sendVideo.js"></script>
+    <script src="../javascript/lofiPopUpModalUpdate.js"></script>
+    <script src="../javascript/lofiPopUpModalDeleted.js"></script>
+    <script src="../javascript/getAllVideos.js"></script>
 </body>
 </html>

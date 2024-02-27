@@ -79,3 +79,25 @@
     background-color: #FEBC38;
 }
 
+.modal-eliminar {
+    width: 30vw;
+    height: 10vh;
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.contenedor-botones {
+    display: flex;
+}
+
+.contenedor-botonones button {
+    color: #000000;
+}
+
+.contenedor-botones-personalizar {
+    width: 80px;
+}
+
