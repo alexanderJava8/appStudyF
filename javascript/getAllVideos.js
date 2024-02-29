@@ -15,7 +15,7 @@ const obtenerVideos = () => {
     }).then(data => {
         mostrarDatos(data)
     }).catch(error => {
-        console.log("HUbo un error")
+        console.log("HUbo un error", error)
     })
 }
 
@@ -29,7 +29,7 @@ const mostrarDatos = (data) => {
             <iframe src="${obj.url}" frameborder="0"></iframe>
             <div class="contenedorBotones">
                 <button class="botones" id="${obj.id}">editar</button>
-                <button class="botones botonEliminar" id="eliminar-${obj.id}">eliminar</button>
+                <button class="botones botonEliminar" id="${obj.id}">eliminar</button>
             </div>
         </div>
         `    
