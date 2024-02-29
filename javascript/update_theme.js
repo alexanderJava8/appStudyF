@@ -25,7 +25,7 @@ const actualizarTema = () => {
 
         throw new Error("network del backend")
     })
-    .then(data => {
+    .then(() => {
         window.location.href = 'topics_cards.html'
     })
     .catch(error => {

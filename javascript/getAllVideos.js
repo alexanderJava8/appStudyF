@@ -25,11 +25,11 @@ const mostrarDatos = (data) => {
 
     data.map(obj => {
         contenido += `
-        <div class="item" id="item">
+        <div class="item" id="item-${obj.id}">
             <iframe src="${obj.url}" frameborder="0"></iframe>
             <div class="contenedorBotones">
-                <button class="botones" id="btn-editar">editar</button>
-                <button class="botones botonEliminar" id="btn-eliminar">eliminar</button>
+                <button class="botones" id="${obj.id}">editar</button>
+                <button class="botones botonEliminar" id="eliminar-${obj.id}">eliminar</button>
             </div>
         </div>
         `    
