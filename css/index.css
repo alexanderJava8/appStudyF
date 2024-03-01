@@ -12,6 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .container-title {
@@ -50,4 +51,36 @@ span.icon {
     width: 400px;
     display: flex;
     justify-content: space-around;
+}
+
+@media only screen and (max-width: 576px) {
+    .container-title {
+        font-family: 'Helvetica', sans-serif;
+        font-size: 10px;
+        font-weight: 600;
+        line-height: 1.1;
+        color: #FEFEFE;
+        text-align: center;
+    }
+
+    .contenedor-icon {
+        width: 300px;
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    span.icon {
+        font-size: 65px;
+        cursor: pointer;
+        color: #FEFEFE;
+        transition: all 0.5s;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-title {
+        font-size: 60px;
+        width: 95%;
+    }
 }
