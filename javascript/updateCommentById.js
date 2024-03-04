@@ -35,13 +35,14 @@ const save = () => {
     })
     .then(response => {
         if(response.ok) {
-            return response.ok
+            return response.json()
         }
 
         throw new Error("newtwork del backend")
     })
     .then(data => {
-        console.log("respuesta", data)
+        console.log(data)
+        window.location.href = `notes.html?id=${data.topic.id}&name=${data.topic.name}`
     })
     .catch(error => {
         console.error("hubo un  problema con el fetch", error)
@@ -50,7 +51,7 @@ const save = () => {
 
 saveNewComment()
 
-const updateComment = () => {
+const getCommentById = () => {
     const idComment = obtenerIdComment()
     const urlBackend = `http://localhost:8080/api/v1/comments/${idComment}`
 
@@ -74,4 +75,4 @@ const updateComment = () => {
     })
 }
 
-updateComment()
+getCommentById()

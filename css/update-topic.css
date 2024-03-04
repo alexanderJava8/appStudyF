@@ -26,6 +26,10 @@ section {
     background-color: #F8F9FA;
 }
 
+.img-container {
+    width: 50%;
+}
+
 .img-container img {
     width: 100%;
     height: 100%;
@@ -57,4 +61,40 @@ section {
 .materia {
     height: 25px;
     outline-color: #FEBC38;
+}
+
+@media only screen and (max-width:576px) {
+    .titulo {
+        font-size: 10vw;
+    }
+
+    .img-container {
+        display: none;
+    }
+
+    .form-createSubject {
+        width: 100%;
+    }
+
+    section {
+        width: 80vw;
+    }
+}
+
+@media only screen and (min-width:577px) and (max-width: 768px) {
+    .titulo {
+        font-size: 8vw;
+    }
+
+    .img-container {
+        display: none;
+    }
+
+    .form-createSubject {
+        width: 100%;
+    }
+
+    section {
+        width: 90vw;
+    }
 }

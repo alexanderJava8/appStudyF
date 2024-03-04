@@ -7,7 +7,7 @@ const obtenerId = () => {
         if(element) {
             const encodedId = encodeURIComponent(parentNodeId)
             const newPage = `noteu.html?id=${encodedId}`
-            window.location.href=newPage
+            window.location.href= newPage
         }
     })
 }

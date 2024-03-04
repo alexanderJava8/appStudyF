@@ -99,14 +99,14 @@ main {
     appearance: none;
     border: none;
     outline: none;
-    font-weight: 600;
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 14px;
     cursor: pointer;
     color: #000000;
     border-radius: 40px;
-    padding: 16px 24px;
+    padding: 10px 15px;
     text-decoration: none;
     margin-top: 12px;
 }
@@ -135,4 +135,37 @@ main {
 
 .botonEliminar {
     background-color: #CB3D3C;
+}
+
+@media only screen and (max-width: 576px) {
+    .title {
+        font-size: 15vw;
+    }   
+
+    .agregar-tema {
+        padding: 7px 12px;
+        font-size: 11px;
+    }
+
+    main {
+        width: 85%;
+    }
+
+    .section-cards {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .contenedorBotones {
+        justify-content: center;
+    }
+}
+
+@media only screen and (min-width:577px) and (max-width:768px){
+    .section-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .title {
+        font-size: 15vw;
+    }
 }
