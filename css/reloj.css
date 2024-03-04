@@ -20,6 +20,7 @@ body {
   width: 35%;
   display: flex;
   justify-content: space-around;
+  gap: 15px;
 }
 
 .icon-container {
@@ -154,3 +155,36 @@ Eliminar luego.
   width: 85px;
 }
 
+@media only screen and (max-width: 576px) {
+  .icon-set {
+    width: 60%;
+    gap: 5px;
+  }
+
+  .icon {
+    font-size: 30px;
+  }
+
+  .icon-container {
+    width: 120px;
+  }
+
+  .cronometro-container > p {
+    font-size: 45px;
+  }
+
+  .contenedor > p {
+    font-size: 45px;
+  }
+}
+
+@media screen and (min-width: 577px) and (max-width: 992px) {
+  .icon-set {
+    width: 50%;
+    gap: 10px;
+  }
+
+  .cronometro-container {
+    margin-top: 30px;
+  }
+}
