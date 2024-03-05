@@ -81,7 +81,7 @@
 
 .modal-eliminar {
     width: 30vw;
-    height: 10vh;
+    height: 20vh;
     background: white;
     display: flex;
     flex-direction: column;
@@ -101,3 +101,36 @@
     width: 80px;
 }
 
+@media screen and (max-width:576px){
+    .modal-overlay .modal {
+        width: 80vw;
+    }
+
+    .modal-img-contenedor {
+        display: none;
+    }
+
+    .modal .modal-nuevo-video {
+        width: 100%;
+    }
+
+    .modal-eliminar {
+        width: 85%;
+        height: 30%;
+    }
+}
+
+@media screen and (min-width:577px) and (max-width:1200px) {
+    .modal-img-contenedor {
+        display: none;
+    }
+
+    .modal .modal-nuevo-video {
+        width: 100%;
+    }
+
+    .modal-eliminar {
+        width: 65%;
+        height: 50%;
+    }
+}
